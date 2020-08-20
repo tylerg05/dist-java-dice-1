@@ -94,6 +94,7 @@ public class DiceGame {
             beginRound();
             boolean evens = rollDice();
             endRound(evens);
+            currentRound++;
         }
 
         out.output("GAME OVER");
