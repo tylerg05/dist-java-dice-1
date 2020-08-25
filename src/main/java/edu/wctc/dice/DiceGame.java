@@ -113,14 +113,26 @@ public class DiceGame {
         out.output(report);
     }
 
+    private String getPlayerChoiceDice(int dieNum) {
+        String menu = "  Choose Die " + dieNum + "\n"
+                + "  1. 6 Sided Die\n"
+                + "  2. 8 Sided Die\n"
+                + "  3. 10 Sided Die\n"
+                + "  4. Cash Out (Quit)";
+        return in.getInput(menu);
+    }
+
     private boolean rollDice() {
-        int die1 = rollDie();
-        int die2 = rollDie();
+        String dieChoice1 = getPlayerChoiceDice(1);
+        String dieChoice2 = getPlayerChoiceDice(2);
+
+        int die1 = rollDie(dieChoice1);
+        int die2 = rollDie(dieChoice2);
 
         // Players win on even totals
         boolean even = (die1 + die2) % 2 == 0;
 
-        String outcome = "Roll was " + die1 + ", " + die2;
+        String outcome = "Die 1 roll was " + die1 + ", Die 2 roll was " + die2;
 
         out.output(outcome + (even ? "\nPlayers WIN!" : "\nPlayers LOSE!"));
 
@@ -129,9 +141,19 @@ public class DiceGame {
         return even;
     }
 
-    private int rollDie() {
+    private int rollDie(String dieChoice) {
         Random random = new Random();
-        return random.nextInt(6) + 1;
+        int die;
+        if (dieChoice.equals("3")) {
+            die = 10;
+        }
+        else if (dieChoice.equals("2")) {
+            die = 8;
+        }
+        else {
+            die = 6;
+        }
+        return random.nextInt(die) + 1;
 //        return dieRoller.rollDie();
     }
 }
