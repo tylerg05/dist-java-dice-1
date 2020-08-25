@@ -127,6 +127,7 @@ public class DiceGame {
         String dieChoice1 = getPlayerChoiceDice(1);
         String dieChoice2 = getPlayerChoiceDice(2);
 
+        // roll dice
         int die1 = rollDie(dieChoice1);
         int die2 = rollDie(dieChoice2);
 
