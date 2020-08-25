@@ -123,6 +123,7 @@ public class DiceGame {
     }
 
     private boolean rollDice() {
+        // choose dice
         String dieChoice1 = getPlayerChoiceDice(1);
         String dieChoice2 = getPlayerChoiceDice(2);
 
